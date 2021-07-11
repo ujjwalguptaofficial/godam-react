@@ -1,0 +1,26 @@
+{
+  "name": "godam-react",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ujjwalguptaofficial/godam-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ujjwalguptaofficial/godam-react/issues"
+  },
+  "homepage": "https://github.com/ujjwalguptaofficial/godam-react#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "godam": "^0.2.0",
+    "typescript": "^4.3.5",
+    "react-dom": "^16.7.0",
+    "react": "^16.7.0"
+  }
+}
