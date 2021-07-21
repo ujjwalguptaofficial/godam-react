@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm pack && cd test && npm run install:test",
     "webpack": "webpack --config webpack.config.js",
-    "build:dev": "cross-env NODE_ENV=development npm run webpack && npm run test",
+    "build:dev": "cross-env NODE_ENV=development npm run webpack",
     "build:prod": "cross-env NODE_ENV=production npm run webpack && npm run test",
     "deploy": "npm run build:dev && npm run build:prod"
   },
@@ -30,7 +30,9 @@
     "typescript": "^4.3.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-external-react": "^1.1.52"
+    "webpack-external-react": "^1.1.52",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "peerDependencies": {
     "react": "^16.7.0",

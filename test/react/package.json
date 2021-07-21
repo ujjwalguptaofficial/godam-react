@@ -8,8 +8,7 @@
     "start": "npm run dev",
     "build:details": "webpack --display-error-details",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install:lib": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",

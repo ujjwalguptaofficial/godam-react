@@ -9,9 +9,10 @@ export function createState(state: object, comp) {
     for (const key in state) {
         const stateValue = state[key];
         if (typeof stateValue === "function") {
-            const stateKey = stateValue();
-            states[key] = comp.store.get(stateKey);
-
+            const mapValue = stateValue();
+            const stateKey = mapValue.key;
+            states[key] = mapValue.state ? comp.store.get(stateKey) :
+                comp.store.eval(stateKey);
             comp.__stateMaps__[stateKey] = key;
         }
         else {
@@ -43,6 +44,15 @@ export function mapState(key: string, room?: string) {
         key = key + "@" + room;
     }
     return () => {
-        return key;
+        return { state: true, key };
+    }
+}
+
+export function mapExpression(key: string, room?: string) {
+    if (room) {
+        key = key + "@" + room;
+    }
+    return () => {
+        return { exp: true, key };
     }
 }

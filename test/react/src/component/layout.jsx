@@ -1,12 +1,14 @@
 import React from "react";
-import { mapState, createState } from "godam-react";
+import { mapState, createState, mapExpression } from "godam-react";
 
 export default class Layout extends React.Component {
     constructor() {
         super();
         this.createState({
             name: mapState('name'),
-            gender: 'male'
+            gender: 'male',
+            about: mapExpression('about')
+
         });
         // this.state = {
         //     name: 'dd'
@@ -34,8 +36,8 @@ export default class Layout extends React.Component {
                     <input type="text" value={this.state.gender} onInput={this.onGenderChange.bind(this)} />
                     {this.state.gender}
                 </p>
-                <p>About myself: 
-                    Hello my name is {this.state.name}. I am {this.state.gender}.
+                <p>About myself:
+                    {this.state.about}
                 </p>
             </div>
         )

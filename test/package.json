@@ -5,7 +5,8 @@
   "main": "install_lib.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:lib": "node install_lib.js"
+    "install:lib": "node install_lib.js",
+    "un:lib": "npm un godam-react"
   },
   "author": "",
   "license": "ISC",
