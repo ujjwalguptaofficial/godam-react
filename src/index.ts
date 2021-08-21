@@ -10,9 +10,9 @@ export function createState(state: object, comp) {
         const stateValue = state[key];
         if (typeof stateValue === "function") {
             const mapValue = stateValue();
-            const stateKey = mapValue.key;
+            const stateKey: string = mapValue.key;
             states[key] = mapValue.state ? comp.store.get(stateKey) :
-                comp.store.eval(stateKey);
+                comp.store.eval(stateKey.replace(/expression./, ''));
             comp.__stateMaps__[stateKey] = key;
         }
         else {
@@ -49,6 +49,7 @@ export function mapState(key: string, room?: string) {
 }
 
 export function mapExpression(key: string, room?: string) {
+    key = `expression.${key}`;
     if (room) {
         key = key + "@" + room;
     }

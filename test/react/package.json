@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "godam": "^0.4.0",
     "jsstore": "^4.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

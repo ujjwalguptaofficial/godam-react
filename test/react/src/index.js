@@ -3,19 +3,23 @@ import ReactDOM from "react-dom";
 import Layout from "./component/layout";
 
 import { initStore } from "godam-react";
-import { Godam, Mutations, Expressions, Computed } from "godam";
+import { Godam, Mutation, Expression, Computed } from "godam";
 
-class RootMutation extends Mutations {
+class RootMutation extends Mutation {
     name(value) {
         this.state.name = value;
     }
 }
 
-class RootExpression extends Expressions {
+class RootExpression extends Expression {
 
-    @Computed('name')
-    about() {
+    get about() {
         return `Hello my name is ${this.get('name')}`
+    }
+
+    constructor() {
+        super();
+        this.markComputed(["name"], "about");
     }
 }
 
