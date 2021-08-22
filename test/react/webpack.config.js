@@ -8,16 +8,22 @@ module.exports = {
     devtool: "sourcemap",
     entry: ["@babel/polyfill", "./src/index.js"],
     module: {
-        rules: [{
-            test: /\.js|.jsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader'
+        rules: [
+            {
+                test: /\.js|.jsx?$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.css?$/,
+                use: ['style-loader', 'css-loader'],
             }
-        }]
+        ]
     },
     resolve: {
-        extensions: ['.js', '.jsx'] // '' is needed to find modules like "jquery"
+        extensions: ['.js', '.jsx', '.css'] // '' is needed to find modules like "jquery"
     },
     output: {
         path: __dirname + "/dist/",

@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "flexstyle": "^1.0.3",
     "godam-react": "file:../godam-react-0.1.0.tgz"
+  },
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "style-loader": "^3.2.1"
   }
 }

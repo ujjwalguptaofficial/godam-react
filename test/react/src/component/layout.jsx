@@ -5,40 +5,61 @@ export default class Layout extends React.Component {
     constructor() {
         super();
         this.createState({
-            name: mapState('name'),
+            firstName: mapState('firstName'),
+            lastName: mapState('lastName'),
             gender: 'male',
-            about: mapExpression('about')
-
+            fullName: mapExpression('fullName')
         });
-        // this.state = {
-        //     name: 'dd'
-        // }
     }
 
-    onNameChange(e) {
-        this.store.set("name", e.target.value);
+    onFirstNameChange(e) {
+        this.store.set("firstName", e.target.value);
+    }
+
+    onLastNameChange(e) {
+        this.store.set("lastName", e.target.value);
     }
 
     onGenderChange(e) {
         this.setState({ "gender": e.target.value })
     }
 
+    submit() {
+        console.log(this.store.do("saveDate", this.state.gender));
+    }
+
     render() {
         return (
-            <div>
-                <p>
-                    Name:
-                    <input type="text" value={this.state.name} onInput={this.onNameChange.bind(this)} />
-                    {this.state.name}
-                </p>
-                <p>
-                    Gender:
+            <div class="col content-center">
+                <div class="row mt-10px">
+                    <div>
+                        Full Name:
+                    </div>
+                    <div class="ml-10px">
+                        {this.state.fullName}
+                    </div>
+                </div>
+                <div class="row mt-10px">
+                    <div>
+                        First Name:
+                    </div>
+                    <input type="text" value={this.state.firstName} onInput={this.onFirstNameChange.bind(this)} />
+                </div>
+                <div class="row mt-10px">
+                    <div>
+                        Last Name:
+                    </div>
+                    <input type="text" value={this.state.lastName} onInput={this.onLastNameChange.bind(this)} />
+                </div>
+                <div class="row mt-10px">
+                    <div>
+                        Gender:
+                    </div>
                     <input type="text" value={this.state.gender} onInput={this.onGenderChange.bind(this)} />
-                    {this.state.gender}
-                </p>
-                <p>About myself:
-                    {this.state.about}
-                </p>
+                </div>
+                <div class="mt-20px">
+                    <button onClick={this.submit.bind(this)}>Submit</button>
+                </div>
             </div>
         )
     }

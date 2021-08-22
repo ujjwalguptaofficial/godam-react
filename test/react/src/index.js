@@ -1,34 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Layout from "./component/layout";
+// import "flexstyle/dist/lib.css";
 
 import { initStore } from "godam-react";
-import { Godam, Mutation, Expression, Computed } from "godam";
+import { Godam, Mutation, Expression } from "godam";
 
 class RootMutation extends Mutation {
-    name(value) {
-        this.state.name = value;
+    firstName(value) {
+        this.state.firstName = value;
+    }
+    lastName(value) {
+        this.state.lastName = value;
     }
 }
 
 class RootExpression extends Expression {
 
-    get about() {
-        return `Hello my name is ${this.get('name')}`
+    get fullName() {
+        return `${this.get('firstName')} ${this.get('lastName')}`
     }
 
     constructor() {
         super();
-        this.markComputed(["name"], "about");
+        this.markComputed(["firstName", 'lastName'], "fullName");
     }
 }
 
 const store = new Godam({
     state: {
-        name: 'ujjwal gupta'
+        firstName: 'ujjwal',
+        lastName: 'gupta'
     },
     mutations: RootMutation,
-    expressions: RootExpression
+    expressions: RootExpression,
+    tasks: {
+        saveDate(gender) {
+            return {
+                fullName: this.eval('fullName'),
+                gender: gender,
+            };
+        }
+    }
 })
 
 initStore(store, React);
