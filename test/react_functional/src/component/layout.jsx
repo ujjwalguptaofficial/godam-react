@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { mapState, createState, mapExpression } from "godam-react";
+import { mapState, createState, mapExpression, createMethod, mapMutation } from "godam-react";
 
 export default function () {
     const { firstName, lastName, fullName, store } = createState({
@@ -7,10 +7,15 @@ export default function () {
         lastName: mapState('lastName'),
         fullName: mapExpression('fullName')
     })
+    
+    const { setFirstName } = createMethod({
+        setFirstName: mapMutation('firstName')
+    });
+
     const [gender, setGender] = useState('gender');
 
     const onFirstNameChange = (e) => {
-        store.set('firstName', e.target.value);
+        setFirstName(e.target.value);
     }
     const onLastNameChange = (e) => {
         store.set('lastName', e.target.value);
@@ -20,8 +25,8 @@ export default function () {
     }
     const submit = (e) => {
         console.log(store.do("saveDate", gender));
-
     }
+
     return (
         <div className="col content-center">
             <div className="row mt-10px">

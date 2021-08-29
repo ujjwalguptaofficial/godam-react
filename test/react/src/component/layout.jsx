@@ -1,5 +1,5 @@
 import React from "react";
-import { mapState, createState, mapExpression } from "godam-react";
+import { mapState, createState, mapExpression, mapMutation } from "godam-react";
 
 export default class Layout extends React.Component {
     constructor() {
@@ -10,10 +10,13 @@ export default class Layout extends React.Component {
             gender: 'male',
             fullName: mapExpression('fullName')
         });
+        this.createMethod({
+            setFirstName: mapMutation("firstName")
+        })
     }
 
     onFirstNameChange(e) {
-        this.store.set("firstName", e.target.value);
+        this.setFirstName(e.target.value);
     }
 
     onLastNameChange(e) {

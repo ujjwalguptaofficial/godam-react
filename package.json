@@ -7,6 +7,7 @@
   "scripts": {
     "test": "npm pack && cd test && npm run install:test",
     "webpack": "webpack --config webpack.config.js",
+    "build:pack": "npm run build:dev && npm pack",
     "build:dev": "cross-env NODE_ENV=development npm run webpack",
     "build:prod": "cross-env NODE_ENV=production npm run webpack",
     "deploy": "npm run build:dev && npm run build:prod"
