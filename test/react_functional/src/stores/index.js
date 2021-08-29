@@ -6,7 +6,6 @@ import { Godam, Mutation, Expression } from "godam";
 
 class RootMutation extends Mutation {
     firstName(value) {
-        debugger;
         this.state.firstName = value;
     }
     lastName(value) {
@@ -42,3 +41,5 @@ export const store = new Godam({
         }
     }
 })
+
+initStore(store, React);

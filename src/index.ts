@@ -1,38 +1,64 @@
 import React from "react";
 import { Godam } from "godam";
 
+let _store: Godam;
+let _react: React;
 export function createState(state: object, comp) {
     const states = {};
-    if (!comp.__stateMaps__) {
-        comp.__stateMaps__ = {};
-    }
+    const stateMaps = {};
     for (const key in state) {
         const stateValue = state[key];
         if (typeof stateValue === "function") {
             const mapValue = stateValue();
             const stateKey: string = mapValue.key;
-            states[key] = mapValue.state ? comp.store.get(stateKey) :
-                comp.store.eval(stateKey.replace(/expression./, ''));
-            comp.__stateMaps__[stateKey] = key;
+            states[key] = mapValue.state ? _store.get(stateKey) :
+                _store.eval(stateKey.replace(/expression./, ''));
+            stateMaps[stateKey] = key;
         }
         else {
             states[key] = stateValue;
         }
     }
-    comp.state = states;
-    comp.store.watch("change", function (key, newValue, oldValue) {
-        const localStateKey = comp.__stateMaps__[key];
+    const stateSetters = {};
+    _store.watch("change", function (key, newValue, oldValue) {
+        const localStateKey = stateMaps[key];
         if (localStateKey) {
-            comp.setState({
-                [localStateKey]: newValue
-            })
+            if (comp) {
+                comp.setState({
+                    [localStateKey]: newValue
+                })
+            }
+            else {
+                stateSetters[localStateKey](newValue);
+            }
+
         }
     });
+    if (comp) {
+        comp.state = states;
+    }
+    else {
+        const result = {
+            store: _store
+        };
+        for (const key in states) {
+            const stateInstance = _react.useState(states[key]);
+            result[key] = stateInstance[0];
+            stateSetters[key] = stateInstance[1];
+        }
+        return result;
+    }
+
 }
 
 
 
 export function initStore(store: Godam, react: React) {
+    _store = store;
+    _react = react;
+    if (!react) {
+        return;
+    }
     react.Component.prototype.createState = function (state: object) {
         createState(state, this);
     }
