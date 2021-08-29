@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "flexstyle": "^1.0.3",
-    "godam": "^0.7.1",
+    "godam": "^1.0.0",
     "godam-react": "^1.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

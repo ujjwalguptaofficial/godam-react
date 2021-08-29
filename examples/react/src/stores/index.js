@@ -17,7 +17,7 @@ class RootExpression extends Expression {
 
     constructor() {
         super();
-        this.markComputed(["firstName", 'lastName'], "fullName");
+        this.markComputed("fullName", "firstName", 'lastName');
     }
 }
 
@@ -26,9 +26,9 @@ export const store = new Godam({
         firstName: 'ujjwal',
         lastName: 'gupta'
     },
-    mutations: RootMutation,
-    expressions: RootExpression,
-    tasks: {
+    mutation: RootMutation,
+    expression: RootExpression,
+    task: {
         saveDate(gender) {
             return {
                 fullName: this.eval('fullName'),

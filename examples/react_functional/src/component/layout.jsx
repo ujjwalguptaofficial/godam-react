@@ -7,12 +7,12 @@ export default function () {
         lastName: mapState('lastName'),
         fullName: mapExpression('fullName')
     })
-    
+
     const { setFirstName } = createMethod({
         setFirstName: mapMutation('firstName')
     });
 
-    const [gender, setGender] = useState('gender');
+    const [gender, setGender] = useState('male');
 
     const onFirstNameChange = (e) => {
         setFirstName(e.target.value);
