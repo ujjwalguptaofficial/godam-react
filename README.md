@@ -36,7 +36,7 @@ class RootExpression extends Expression {
 
     constructor() {
         super();
-        this.markComputed(["firstName", 'lastName'], "fullName");
+        this.markComputed("fullName", "firstName", 'lastName');
     }
 }
 
@@ -45,8 +45,8 @@ const store = new Godam({
         firstName: 'ujjwal',
         lastName: 'gupta'
     },
-    mutations: RootMutation,
-    expressions: RootExpression
+    mutation: RootMutation,
+    expression: RootExpression
 })
 
 initStore(store, React);
@@ -148,7 +148,7 @@ class RootExpression extends Expression {
 
     constructor() {
         super();
-        this.markComputed(["firstName", 'lastName'], "fullName");
+        this.markComputed("fullName", "firstName", 'lastName');
     }
 }
 
@@ -157,8 +157,8 @@ export const store = new Godam({
         firstName: 'ujjwal',
         lastName: 'gupta'
     },
-    mutations: RootMutation,
-    expressions: RootExpression
+    mutation: RootMutation,
+    expression: RootExpression
 })
 
 initStore(store, React);

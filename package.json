@@ -1,6 +1,6 @@
 {
   "name": "godam-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Godam plugin for react framework.",
   "main": "dist/godam-react.commonjs2.js",
   "types": "dist/ts/src/index.d.ts",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ujjwalguptaofficial/godam-react#readme",
   "dependencies": {
-    "godam": "^0.7.1"
+    "godam": "^1.0.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^6.1.1",

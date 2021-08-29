@@ -14,8 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "flexstyle": "^1.0.3",
-    "godam": "^0.4.0",
-    "godam-react": "file:../godam-react-1.0.0.tgz",
+    "godam-react": "file:../godam-react-1.1.0.tgz",
     "jsstore": "^4.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
