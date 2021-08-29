@@ -1,21 +1,22 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-// const merge = require('webpack-merge');
+const banner = require('./build_helper/license');
 const isDev = process.env.NODE_ENV === "development";
 const externalReact = require('webpack-external-react');
 const webpack = require("webpack");
+const SmartBannerPlugin = require('smart-banner-webpack-plugin');
 
 const libraryTarget = [{
     type: "var",
-    name: isDev ? 'lib.js' : 'lib.min.js'
+    name: isDev ? 'godam-react.js' : 'godam-react.min.js'
 },
 {
     type: "commonjs2",
-    name: isDev ? 'lib.commonjs2.js' : 'lib.commonjs2.min.js'
+    name: isDev ? 'godam-react.commonjs2.js' : 'godam-react.commonjs2.min.js'
 },
 {
     type: "umd",
-    name: isDev ? 'lib.umd.js' : 'lib.umd.min.js'
+    name: isDev ? 'godam-react.umd.js' : 'godam-react.umd.min.js'
 }
 ];
 
@@ -70,7 +71,8 @@ function getConfig(target) {
         plugins: [
             new webpack.ProvidePlugin({
                 React: "React", react: "React", "window.react": "React", "window.React": "React"
-            })
+            }),
+            new SmartBannerPlugin(banner),
             // new CopyPlugin({
             //     patterns: [
             //         { from: 'src/middleware.js', to: '' },
