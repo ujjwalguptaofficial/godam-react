@@ -56,7 +56,7 @@ initStore(store, React);
 
 ```
 import React from "react";
-import { mapState, createState, mapExpression } from "godam-react";
+import { mapState, createState, mapExpression, mapMutation } from "godam-react";
 
 export default class Layout extends React.Component {
     constructor() {
@@ -67,10 +67,14 @@ export default class Layout extends React.Component {
             gender: 'male',
             fullName: mapExpression('fullName')
         });
+        
+        this.createMethod({
+            setFirstName: mapMutation("firstName")
+        })
     }
 
     onFirstNameChange(e) {
-        this.store.set("firstName", e.target.value);
+        this.setFirstName(e.target.value);
     }
 
     onLastNameChange(e) {
@@ -164,30 +168,33 @@ initStore(store, React);
 
 ```
 import React, { useState } from "react";
-import { mapState, createState, mapExpression } from "godam-react";
+import { mapState, createState, mapExpression, createMethod, mapMutation } from "godam-react";
 
-export default function() {
-
+export default function () {
     const { firstName, lastName, fullName, store } = createState({
         firstName: mapState('firstName'),
         lastName: mapState('lastName'),
         fullName: mapExpression('fullName')
     })
+    
+    const { setFirstName } = createMethod({
+        setFirstName: mapMutation('firstName')
+    });
 
-    const [gender, setGender] = useState('male');
+    const [gender, setGender] = useState('gender');
 
     const onFirstNameChange = (e) => {
-        store.set('firstName', e.target.value);
-    };
+        setFirstName(e.target.value);
+    }
 
     const onLastNameChange = (e) => {
         store.set('lastName', e.target.value);
-    };
+    }
 
     const onGenderChange = (e) => {
         setGender(e.target.value);
-    };
-    
+    }
+
     return (
         <div className="col content-center">
             <div className="row mt-10px">
