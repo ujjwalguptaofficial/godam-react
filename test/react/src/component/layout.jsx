@@ -30,34 +30,34 @@ export default class Layout extends React.Component {
 
     render() {
         return (
-            <div class="col content-center">
-                <div class="row mt-10px">
+            <div className="col content-center">
+                <div className="row mt-10px">
                     <div>
                         Full Name:
                     </div>
-                    <div class="ml-10px">
+                    <div className="ml-10px">
                         {this.state.fullName}
                     </div>
                 </div>
-                <div class="row mt-10px">
+                <div className="row mt-10px">
                     <div>
                         First Name:
                     </div>
                     <input type="text" value={this.state.firstName} onInput={this.onFirstNameChange.bind(this)} />
                 </div>
-                <div class="row mt-10px">
+                <div className="row mt-10px">
                     <div>
                         Last Name:
                     </div>
                     <input type="text" value={this.state.lastName} onInput={this.onLastNameChange.bind(this)} />
                 </div>
-                <div class="row mt-10px">
+                <div className="row mt-10px">
                     <div>
                         Gender:
                     </div>
                     <input type="text" value={this.state.gender} onInput={this.onGenderChange.bind(this)} />
                 </div>
-                <div class="mt-20px">
+                <div className="mt-20px">
                     <button onClick={this.submit.bind(this)}>Submit</button>
                 </div>
             </div>

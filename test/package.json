@@ -6,16 +6,32 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:lib": "node install_lib.js",
-    "un:lib": "npm un godam-react"
+    "un:lib": "npm un godam-react",
+    "dev:react": "cd react && webpack-dev-server --content-base src --inline --hot",
+    "dev": "cd react_functional && webpack-dev-server --content-base src --inline --hot"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "flexstyle": "^1.0.3",
-    "godam-react": "file:../godam-react-0.1.0.tgz"
+    "godam-react": "file:../godam-react-0.1.0.tgz",
+    "godam": "^0.4.0",
+    "jsstore": "^4.0.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
     "css-loader": "^6.2.0",
-    "style-loader": "^3.2.1"
+    "style-loader": "^3.2.1",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
