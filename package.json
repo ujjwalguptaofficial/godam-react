@@ -1,7 +1,7 @@
 {
   "name": "godam-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Godam plugin for react framework.",
   "main": "dist/godam-react.commonjs2.js",
   "types": "dist/ts/src/index.d.ts",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/ujjwalguptaofficial/godam-react.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ujjwalguptaofficial/godam-react/issues"
   },

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { mapState, createState, mapExpression } from "godam-react";
 
-export default function component() {
+export default function () {
     const { firstName, lastName, fullName, store } = createState({
         firstName: mapState('firstName'),
         lastName: mapState('lastName'),
